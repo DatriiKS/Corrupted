@@ -43,19 +43,19 @@ public static class JsonDataService<T> where T : PersistentDataBase, new()
         }
         string jsonString = File.ReadAllText(path);
         T data = JsonConvert.DeserializeObject<T>(jsonString);
-//Debug.Log($"Data of type {data.GetType()}<color=green>loaded successfully</color>");
+	Debug.Log($"Data of type {data.GetType()}<color=green>loaded successfully</color>");
         return data;
-        //try
-        //{
-        //    string jsonString = File.ReadAllText(path);
-        //    T data = JsonConvert.DeserializeObject<T>(jsonString);
-        //    Debug.Log($"Data of type {data.GetType()}<color=green>loaded successfully</color>");
-        //    return data;
-        //}
-        //catch (Exception exception)
-        //{
-        //    Debug.LogError($"Failed to load data due to: {exception.Message} {exception.StackTrace}");
-        //    throw exception;
-        //}
+        try
+        {
+            string jsonString = File.ReadAllText(path);
+            T data = JsonConvert.DeserializeObject<T>(jsonString);
+            Debug.Log($"Data of type {data.GetType()}<color=green>loaded successfully</color>");
+            return data;
+        }
+        catch (Exception exception)
+        {
+            Debug.LogError($"Failed to load data due to: {exception.Message} {exception.StackTrace}");
+            throw exception;
+        }
     }
 }
